@@ -1,8 +1,10 @@
 var express = require("express");
 var app = express();
 
+app.use(express.static("public"));
+
 app.get("/", function(request, response) {
-  response.send("hello world");
+  //response.sendFile(__dirname + "/public/index.html");
 });
 
 app.get("/blocks", function(request, response) {
