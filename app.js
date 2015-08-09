@@ -8,7 +8,12 @@ app.use(express.static("public"));
 
 app.get("/blocks", function(request, response) {
   var blocks = ["fixed", "movable", "rotating"];
-  response.json(blocks);
+
+  if (request.query.limit >= 0) {
+    response.json(blocks.slice(0, request.query.limit));
+  } else {
+    response.json(blocks);
+  }
 });
 
 app.get("/parts", function(request, response) {
